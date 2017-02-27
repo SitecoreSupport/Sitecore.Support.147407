@@ -11,7 +11,7 @@ namespace Sitecore.Support.Analytics.Pipelines.StartAnalytics
             if (Tracker.Current == null)
             {
                 Log.Info("Sitecore.Support.147407: aborting StartAnalytics pipeline since Tracker.Current is not initialized.", this);
-                args.AbortPipeline();
+                args.AbortPipeline(); //abort pipeline
 
             }            
         }
