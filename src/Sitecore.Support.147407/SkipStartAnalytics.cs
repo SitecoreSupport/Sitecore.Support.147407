@@ -15,7 +15,7 @@ namespace Sitecore.Support.Analytics.Pipelines.StartAnalytics
             }
             catch (Exception ex)
             {
-                Log.Error("Sitecore.Support.147407: Cannot create tracker.", ex, typeof(Tracker));
+                Log.Error("Sitecore.Support.147407: Cannot create tracker.", ex, typeof(CreateTracker));
                 args.AbortPipeline();
             }
         }
