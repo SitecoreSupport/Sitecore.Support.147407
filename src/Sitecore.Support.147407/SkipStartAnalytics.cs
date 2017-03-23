@@ -1,19 +1,23 @@
 ﻿using Sitecore.Analytics;
 using Sitecore.Diagnostics;
 using Sitecore.Pipelines;
+using System;
 
 namespace Sitecore.Support.Analytics.Pipelines.StartAnalytics
 {
-    public class TrackerChecker : Sitecore.Analytics.Pipelines.StartAnalytics.CreateTracker
+    public class CreateTracker : Sitecore.Analytics.Pipelines.StartAnalytics.CreateTracker
     {
         public override void Process(PipelineArgs args)
-        {           
-            if (Tracker.Current == null)
+        {
+            try
             {
-                Log.Info("Sitecore.Support.147407: aborting StartAnalytics pipeline since Tracker.Current is not initialized.", this);
+                base.Process(args);
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Sitecore.Support.147407: Cannot create tracker.", ex, typeof(Tracker));
                 args.AbortPipeline();
-
-            }            
+            }
         }
     }
 }
