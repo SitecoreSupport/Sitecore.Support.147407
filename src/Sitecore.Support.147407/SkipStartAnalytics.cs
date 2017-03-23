@@ -4,15 +4,14 @@ using Sitecore.Pipelines;
 
 namespace Sitecore.Support.Analytics.Pipelines.StartAnalytics
 {
-    public class TrackerChecker : Sitecore.Analytics.Pipelines.StartAnalytics.CreateTracker
+    public class TrackerChecker
     {
-        public override void Process(PipelineArgs args)
+        public void Process(PipelineArgs args)
         {           
             if (Tracker.Current == null)
             {
-                Log.Info("Sitecore.Support.147407: aborting StartAnalytics pipeline since Tracker.Current is not initialized.", this);
+                Log.Warn("Sitecore.Support.147407: aborting StartAnalytics pipeline since Tracker.Current is not initialized.", this);
                 args.AbortPipeline();
-
             }            
         }
     }
